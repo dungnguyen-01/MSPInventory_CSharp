@@ -1,0 +1,69 @@
+
+CREATE TABLE Location(
+   LocationID int identity ,
+   Name Varchar(100),
+   Remarks varchar(200),
+   DateTimeStamp datetime,
+   [User] varchar(50)
+);
+
+CREATE TABLE Project(
+   ProjectID int identity ,
+   Name Varchar(100),
+   Remarks varchar(200),
+   DateTimeStamp datetime,
+   [User] varchar(50)
+);
+
+CREATE TABLE Item(
+   ItemID int identity ,
+   Name Varchar(100),
+   Remarks varchar(200),
+   DateTimeStamp datetime,
+   [User] varchar(50)
+);
+
+CREATE TABLE Model(
+   ModelID int identity,
+   ItemID int Not Null,
+   Model Varchar(100),
+   Remarks varchar(200),
+   DateTimeStamp datetime,
+   [User] varchar(50)
+);
+
+
+CREATE TABLE [dbo].[Shipping](
+	[ShipID] [int] IDENTITY(1,1) NOT NULL,
+	[ItemID] [int] NOT NULL,
+	[ModelID] [int] NOT NULL,
+	[SerialNo] [nvarchar](50) NULL,
+	[LocationFrom] [nvarchar](50) NULL,
+	[LocationTo] [nvarchar](50) NULL,
+	[PersonInCharge] [nvarchar](50) NULL,
+	[DateTimeStamp] [datetime] NULL,
+	[Remarks] [nvarchar](100) NULL,
+	[PurchaseDate] [datetime] NULL,
+	[LastCalibrationDate] [datetime] NULL,
+	[NextCalibrationDate] [datetime] NULL,
+	[Description] [varchar](100) NULL,
+	[QtyIn] [numeric](20, 0) NOT NULL,
+	[QtyOut] [numeric](20, 0) NOT NULL,
+	[StationName] [varchar](100) NULL,
+	[User] [varchar](50) NULL,
+	[ProjectID] [int] NULL,
+	[LocationID] [int] NULL
+)
+
+
+Create View Product_Transaction_VW
+AS
+select S.ShipID,S.DateTimeStamp as [date],I.Name,M.Model,S.SerialNo,Location=CASE QtyIn
+         WHEN 0 THEN S.LocationTo
+         ELSE S.LocationFrom
+      END,QtyIn,QtyOut,
+      (Select sum(COALESCE(QtyIn,0)-COALESCE(QtyOut,0)) from Shipping A Where A.ShipID<= S.ShipID and A.ItemID=S.ItemID and A.ModelID=S.ModelID and A.SerialNo=S.SerialNo) as Balance
+      ,S.Description,P.Name as Project,S.StationName,S.[User],S.PersonInCharge as RequestedBy,S.Remarks,S.ItemID
+      from Shipping S left join Item I on S.ItemID=I.ItemID left join Model M on S.ModelID=M.ModelID left join Project P on S.ProjectID=P.ProjectID 
+      --order by date,I.Name,Model
+

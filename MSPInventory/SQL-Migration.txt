@@ -1,0 +1,44 @@
+select * from Equipments where equipmentModelID=6
+select * from dbo.EquipmentModels
+select * from item
+select * from model
+select * from dbo.PrismTypes
+select * from Shipping
+select * from Activities
+select * from Equipments where EquipmentModelID 6
+select * from Activities A left join 
+Equipments E on A.EquipmentID=E.EquipmentID where E.EquipmentModelID= 6
+
+select 1204+32
+--Insert into Model (ModelID,ItemID,Model) select EquipmentModelID,1,Model from EquipmentModels where equipmentModelID<>6 --For Total Station
+--Insert into Model (ModelID,ItemID,Model) select EquipmentModelID,3,Model from EquipmentModels where equipmentModelID=6 --For StarNet
+--Insert into Location (Name) select distinct locationfrom as Location from Activities union  select distinct locationTo as Location from Activities
+--Insert into Shipping (Select 
+
+/* Select * into Shipping_Clone from
+(
+Select 1 as ItemID,A.EquipmentID,E.EquipmentModelID as ModelID,E.SerialNo,A.LocationFrom,A.LocationTo,A.PersonInCharge,A.DateTimeStamp,A.Remarks,E.PurchaseDate,E.LastCalibrationDate,
+E.NextCalibrationDate,'' as Description,A.Quantity as QtyIn,0 as QtyOut,'' as StationName from Activities A left join Equipments E on A.EquipmentID=E.EquipmentID
+where A.LocationTo='MSP Office' 
+union all
+Select 1 as ItemID,A.EquipmentID,E.EquipmentModelID as ModelID,E.SerialNo,A.LocationFrom,A.LocationTo,A.PersonInCharge,A.DateTimeStamp,A.Remarks,E.PurchaseDate,E.LastCalibrationDate,
+E.NextCalibrationDate,'' as Description,0 as QtyIn,A.Quantity as QtyOut,'' as StationName from Activities A left join Equipments E on A.EquipmentID=E.EquipmentID
+where A.LocationTo<>'MSP Office' ) Main */
+
+--Insert into Shipping
+Select 1 as ItemID,E.EquipmentModelID,E.SerialNo,A.LocationFrom,A.LocationTo,A.PersonInCharge,A.DateTimeStamp,A.Remarks,E.PurchaseDate,E.LastCalibrationDate,
+E.NextCalibrationDate,'' as Description,A.Quantity as QtyIn,0 as QtyOut,'' as StationName,null as [user],null as ProjectID,null as LocationID from Activities A left join Equipments E on A.EquipmentID=E.EquipmentID
+where A.LocationTo='MSP Office' and EquipmentModelID<>6
+union all
+Select 1 as ItemID,E.EquipmentModelID,E.SerialNo,A.LocationFrom,A.LocationTo,A.PersonInCharge,A.DateTimeStamp,A.Remarks,E.PurchaseDate,E.LastCalibrationDate,
+E.NextCalibrationDate,'' as Description,0 as QtyIn,A.Quantity as QtyOut,'' as StationName,null as [user],null as ProjectID,null as LocationID from Activities A left join Equipments E on A.EquipmentID=E.EquipmentID
+where A.LocationTo<>'MSP Office' and EquipmentModelID<>6 
+Union All
+Select 3 as ItemID,E.EquipmentModelID,E.SerialNo,A.LocationFrom,A.LocationTo,A.PersonInCharge,A.DateTimeStamp,A.Remarks,E.PurchaseDate,E.LastCalibrationDate,
+E.NextCalibrationDate,'' as Description,A.Quantity as QtyIn,0 as QtyOut,'' as StationName,null as [user],null as ProjectID,null as LocationID from Activities A left join Equipments E on A.EquipmentID=E.EquipmentID
+where A.LocationTo='MSP Office' and EquipmentModelID=6
+union all
+Select 3 as Item,E.EquipmentModelID,E.SerialNo,A.LocationFrom,A.LocationTo,A.PersonInCharge,A.DateTimeStamp,A.Remarks,E.PurchaseDate,E.LastCalibrationDate,
+E.NextCalibrationDate,'' as Description,0 as QtyIn,A.Quantity as QtyOut,'' as StationName,null as [user],null as ProjectID,null as LocationID from Activities A left join Equipments E on A.EquipmentID=E.EquipmentID
+where A.LocationTo<>'MSP Office' and EquipmentModelID=6 
+

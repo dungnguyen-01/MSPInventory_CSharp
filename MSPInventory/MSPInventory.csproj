@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C71E374B-1AD0-4845-8555-2023B789C108}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MSPInventory</RootNamespace>
+    <AssemblyName>MSPInventory</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>inventory.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppSettingLinQ.cs" />
+    <Compile Include="AppSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppSettings.Designer.cs">
+      <DependentUpon>AppSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MSPInventory_New.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MSPInventory_New.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmActivitiesFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmActivitiesFilter.Designer.cs">
+      <DependentUpon>FrmActivitiesFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductTranRptFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductTranRptFilter.Designer.cs">
+      <DependentUpon>ProductTranRptFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShipOutFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShipOutFrm.Designer.cs">
+      <DependentUpon>ShipOutFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmShipInFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmShipInFilter.Designer.cs">
+      <DependentUpon>FrmShipInFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShipInEditFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShipInEditFrm.Designer.cs">
+      <DependentUpon>ShipInEditFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModelFrm.Designer.cs">
+      <DependentUpon>ModelFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShipInFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShipInFrm.Designer.cs">
+      <DependentUpon>ShipInFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseMgr.cs" />
+    <Compile Include="EditActivityFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditActivityFrm.Designer.cs">
+      <DependentUpon>EditActivityFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemFilterFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemFilterFrm.Designer.cs">
+      <DependentUpon>ItemFilterFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemFrm.Designer.cs">
+      <DependentUpon>ItemFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListViewEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrm.Designer.cs">
+      <DependentUpon>MainFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrismInFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrismInFrm.Designer.cs">
+      <DependentUpon>PrismInFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrismOutFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrismOutFrm.Designer.cs">
+      <DependentUpon>PrismOutFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SettingsFile.cs" />
+    <Compile Include="Splash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Splash.Designer.cs">
+      <DependentUpon>Splash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserFrm.Designer.cs">
+      <DependentUpon>UserFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserRoles.cs" />
+    <EmbeddedResource Include="AppSettings.resx">
+      <DependentUpon>AppSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmActivitiesFilter.resx">
+      <DependentUpon>FrmActivitiesFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductTranRptFilter.resx">
+      <DependentUpon>ProductTranRptFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShipOutFrm.resx">
+      <DependentUpon>ShipOutFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmShipInFilter.resx">
+      <DependentUpon>FrmShipInFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShipInEditFrm.resx">
+      <DependentUpon>ShipInEditFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModelFrm.resx">
+      <DependentUpon>ModelFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShipInFrm.resx">
+      <DependentUpon>ShipInFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditActivityFrm.resx">
+      <DependentUpon>EditActivityFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemFilterFrm.resx">
+      <DependentUpon>ItemFilterFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemFrm.resx">
+      <DependentUpon>ItemFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm.resx">
+      <DependentUpon>MainFrm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrismInFrm.resx">
+      <DependentUpon>PrismInFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrismOutFrm.resx">
+      <DependentUpon>PrismOutFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Splash.resx">
+      <DependentUpon>Splash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserFrm.resx">
+      <DependentUpon>UserFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="MSPInventory_New.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>MSPInventory_New.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MSPInventory_New.dbml.layout">
+      <DependentUpon>MSPInventory_New.dbml</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="OutlookBarLibrary\OutlookBarLibrary.vbproj">
+      <Project>{823663F7-2BFB-4699-A85D-5737083D3DE4}</Project>
+      <Name>OutlookBarLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="inventory.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
